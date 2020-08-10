@@ -52,7 +52,11 @@
             }
         %>
 
-        <p>Logged In as <%= session.getAttribute("email").toString().substring(0, session.getAttribute("email").toString().indexOf("@")) %> </p>
+        <%
+            String username = session.getAttribute("email").toString().substring(0, session.getAttribute("email").toString().indexOf("@"));
+            username = (username.charAt(0)+"").toUpperCase()+username.substring(1).toLowerCase();
+        %>
+        <p>Logged In as <%= username %> </p>
 
         <form method="post" action="/ublog/post/util">
             <label>Post Id:</label>

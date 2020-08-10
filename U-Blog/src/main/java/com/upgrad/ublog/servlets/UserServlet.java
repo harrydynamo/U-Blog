@@ -115,6 +115,7 @@ public class UserServlet extends HttpServlet {
             try {
                 UserDTO user = userService.getUser(email);
                 if (user == null || !user.getPassword().equals(password)) {
+                    System.out.println((user != null)?"Please enter valid credentials" : "No user registered with the given email address!");
                     req.setAttribute("message", (user != null)? "Please enter valid credentials" : "No user registered with the given email address!");
                     req.getRequestDispatcher("/index.jsp").forward(req, resp);
                 } else {
@@ -122,7 +123,8 @@ public class UserServlet extends HttpServlet {
                     req.getRequestDispatcher("/Home.jsp").forward(req, resp);
                 }
             } catch (Exception e) {
-                req.setAttribute("message", e.getMessage());
+                e.printStackTrace();
+                req.setAttribute("message", "Some unexpected error occurred!");
                 req.getRequestDispatcher("/index.jsp").forward(req, resp);
                 return;
             }

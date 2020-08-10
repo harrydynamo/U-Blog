@@ -49,6 +49,7 @@ public class UserDAOImpl implements UserDAO {
         Connection connection = DatabaseConnection.getInstance();
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery("SELECT * FROM UBLOG_USERS WHERE email_id = '" + emailId + "'");
+        System.out.println("findByEmail = " + emailId);
         if (resultSet.next())
             return new UserDTO(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3));
         return null;
