@@ -149,6 +149,7 @@ public class PostUtilServlet extends HttpServlet {
                 throw new PostNotFoundException("Sorry no posts exists for this tag");
             req.setAttribute("posts", posts);
         } catch (Exception e) {
+            e.printStackTrace();
             req.setAttribute("message", e.getMessage());
         }
 

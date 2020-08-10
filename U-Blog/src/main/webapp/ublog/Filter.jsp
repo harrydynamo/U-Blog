@@ -74,8 +74,8 @@
                     Set<String> tags = postService.getAllTags();
                     for (String tag : tags) {
                 %>
-                        <option value= <%= tag %>>
-                            <%=tag%>
+                        <option value= "<%= tag %>">
+                            <%= tag %>
                         </option>
                 <%
                     }
